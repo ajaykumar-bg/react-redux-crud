@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-function Skills() {
-  return (
-    <div>
-      Skills Component
-    </div>
-  )
+class Skills extends Component {
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
 }
 
 export default Skills
