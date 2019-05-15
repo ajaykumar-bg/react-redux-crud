@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
 
-import games from './reducers/games'
+import skills from './reducers/skills'
 
 export default combineReducers({
-    games
+    skills
 })
 
