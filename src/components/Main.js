@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Switch, Route} from 'react-router-dom'
 
-import Skills from './Skills'
+import SkillsPage from './SkillsPage'
 
 
 export class Main extends Component {
@@ -9,8 +9,8 @@ export class Main extends Component {
     return (
       <main>
         <Switch>
-            <Route exact path="/" component={Skills}/>
-            <Route exact path="/skills" component={Skills}/>
+            <Route exact path="/" component={SkillsPage}/>
+            <Route exact path="/skills" component={SkillsPage}/>
         </Switch>
         
       </main>
