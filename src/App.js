@@ -2,18 +2,18 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Main from './components/Main'
+import Navbar from './components/Navbar'
+
 import {Link} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Link to="/skills">Skills</Link>
-      </header>
+      <Navbar />
+      <div className="container">
+        <Main/>
+      </div>
     </div>
   );
 }
