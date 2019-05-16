@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import {connect} from 'react-redux'
-import {saveSkill, fetchSkill} from '../actions/SkillsAction'
+import {saveSkill, fetchSkill, updateSkill} from '../actions/SkillsAction'
 
 class SkillForm extends Component {
     constructor(props) {
@@ -25,14 +25,28 @@ class SkillForm extends Component {
         );
     }
 
-    handleChange = (event) => {
-        this.setState({[event.target.name] : event.target.value})
-    }
+    updateSkill(newSkill) {
+      console.log(newSkill)
+      this.props.updateSkill(newSkill)
+      .then(resp => {
+          this.props.history.push('/skills');
+      },
+          (err) => err.response.json().then(({errors}) => console.log(errors))
+      );
+  }
 
     onSubmit = (event) => {
         event.preventDefault();
         const newSkill = this.state;
-        this.addSkill(newSkill);
+        if(newSkill.id) {
+          this.updateSkill(newSkill);
+        } else {
+          this.addSkill(newSkill);
+        }
+    }
+
+    handleChange = (event) => {
+      this.setState({[event.target.name] : event.target.value})
     }
 
     componentWillReceiveProps = (nextProps) => {
@@ -42,7 +56,7 @@ class SkillForm extends Component {
         version: nextProps.skill.version
       });
     }
-    
+
     componentDidMount = () => {
       if(this.props.match.params.id) {
         this.props.fetchSkill(this.props.match.params.id)
@@ -86,4 +100,4 @@ function mapStateToProps(state, props) {
   return { skill: null };
 }
 
-export default connect(mapStateToProps, {saveSkill, fetchSkill})(SkillForm)
+export default connect(mapStateToProps, {saveSkill, fetchSkill, updateSkill})(SkillForm)
