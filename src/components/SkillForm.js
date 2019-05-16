@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import {connect} from 'react-redux'
-import {saveSkill} from '../actions/SkillsAction'
+import {saveSkill, fetchSkill} from '../actions/SkillsAction'
 
-class AddSkill extends Component {
+class SkillForm extends Component {
     constructor(props) {
       super(props)
     
       this.state = {
-        name: '',
-        version: ''
+        id: this.props.skill ? this.props.skill.id : null,
+        name: this.props.skill ? this.props.skill.name : '',
+        version: this.props.skill ? this.props.skill.version : ''
       }
     }
 
@@ -33,6 +34,22 @@ class AddSkill extends Component {
         const newSkill = this.state;
         this.addSkill(newSkill);
     }
+
+    componentWillReceiveProps = (nextProps) => {
+      this.setState({
+        id: nextProps.skill.id,
+        name: nextProps.skill.name,
+        version: nextProps.skill.version
+      });
+    }
+    
+    componentDidMount = () => {
+      if(this.props.match.params.id) {
+        this.props.fetchSkill(this.props.match.params.id)
+      }
+      
+    }
+    
     
 
   render() {
@@ -40,7 +57,7 @@ class AddSkill extends Component {
       <div>
         <br />
         <Link className="btn grey" to="/skills">Back</Link>
-        <h3>Add Skill</h3>
+        <h3>Skill Form</h3>
         <form onSubmit={this.onSubmit}>
           <div className="input-field">
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange}></input>
@@ -58,4 +75,15 @@ class AddSkill extends Component {
   }
 }
 
-export default connect(null, {saveSkill})(AddSkill)
+function mapStateToProps(state, props) {
+  console.log("state", state)
+  console.log("props", props)
+  if(props.match.params.id) {
+    return {
+      skill: state.skills.find(item => item.id == props.match.params.id)
+    }
+  }
+  return { skill: null };
+}
+
+export default connect(mapStateToProps, {saveSkill, fetchSkill})(SkillForm)
