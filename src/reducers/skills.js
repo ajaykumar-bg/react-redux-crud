@@ -1,4 +1,4 @@
-import { SET_SKILLS, ADD_SKILL, SKILL_FETCHED, SKILL_UPDATED } from '../constants/Contants'
+import { SET_SKILLS, ADD_SKILL, SKILL_FETCHED, SKILL_UPDATED, SKILL_DELETED } from '../constants/Contants'
 
 export default function skills(state = [], action = {}) {
     switch (action.type) {
@@ -30,6 +30,9 @@ export default function skills(state = [], action = {}) {
                 if(item.id == action.skill.id) return action.skill;
                 return item;
             });
+        }
+        case SKILL_DELETED: {
+            return state.filter(item => item.id != action.skillId)
         }
         default: return state;
     }

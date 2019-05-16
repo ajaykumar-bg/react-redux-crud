@@ -1,5 +1,5 @@
 import ApiConstants from '../constants/ApiConstants'
-import { SET_SKILLS, ADD_SKILL, SKILL_UPDATED, SKILL_FETCHED } from '../constants/Contants'
+import { SET_SKILLS, ADD_SKILL, SKILL_UPDATED, SKILL_FETCHED, SKILL_DELETED } from '../constants/Contants'
 
 function handleResponse(response) {
     if(response.ok) {
@@ -29,6 +29,13 @@ export function skillUpdated(skill) {
     return {
         type: SKILL_UPDATED,
         skill
+    }
+}
+
+export function skillDeleted(skillId) {
+    return {
+        type: SKILL_DELETED,
+        skillId
     }
 }
 
@@ -64,6 +71,19 @@ export function updateSkill(data) {
             }
         }).then(handleResponse)
         .then(data => dispatch(skillUpdated(data)))
+    }
+}
+
+export function deleteSkill(id) {
+    const { baseURL, SKILL_URL } = ApiConstants;
+    return dispatch => {
+        return fetch(`${baseURL}${SKILL_URL}${id}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(handleResponse)
+        .then(data => dispatch(skillDeleted(id)))
     }
 }
 

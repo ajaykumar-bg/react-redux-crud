@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 
 import SkillItem from './SkillItem'
 
-function SkillsList({skills}) {
+function SkillsList({skills, deleteSkill}) {
     const emptyMessage = (
         <p>There are no skills yet in your collection</p>
     );
     const skillItems = skills.map((skill ,index) => {
       return (
-        <SkillItem key={skill.id} item={skill}/>
+        <SkillItem key={skill.id} item={skill} deleteSkill={deleteSkill}/>
       );
     })
     const skillsList = (
@@ -38,7 +38,8 @@ function SkillsList({skills}) {
 }
 
 SkillsList.propTypes = {
-    skills: PropTypes.array.isRequired
+    skills: PropTypes.array.isRequired,
+    deleteSkill: PropTypes.func.isRequired
 }
 
 export default SkillsList

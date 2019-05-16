@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import { fetchSkills } from '../actions/SkillsAction'
+import { fetchSkills, deleteSkill } from '../actions/SkillsAction'
 
 import SkillsList from './SkillsList'
 
@@ -13,7 +13,7 @@ class SkillsPage extends Component {
   render() {
     return (
       <div>
-        <SkillsList skills= {this.props.skills}></SkillsList>
+        <SkillsList skills= {this.props.skills} deleteSkill={this.props.deleteSkill}></SkillsList>
       </div>
     )
   }
@@ -21,7 +21,8 @@ class SkillsPage extends Component {
 
 SkillsPage.propTypes = {
     skills: PropTypes.array.isRequired,
-    fetchSkills: PropTypes.func.isRequired
+    fetchSkills: PropTypes.func.isRequired,
+    deleteSkill: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -30,4 +31,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {fetchSkills})(SkillsPage)
+export default connect(mapStateToProps, {fetchSkills, deleteSkill})(SkillsPage)
