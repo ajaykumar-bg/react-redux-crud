@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import {connect} from 'react-redux'
+import {saveSkill} from '../actions/SkillsAction'
+
 class AddSkill extends Component {
     constructor(props) {
       super(props)
@@ -11,12 +14,14 @@ class AddSkill extends Component {
       }
     }
 
-    componentWillMount() {
-    }
-
     addSkill(newSkill) {
         console.log(newSkill)
-        // this.props.saveSkill(newSkill);
+        this.props.saveSkill(newSkill)
+        .then(resp => {
+            this.props.history.push('/skills');
+        },
+            (err) => err.response.json().then(({errors}) => console.log(errors))
+        );
     }
 
     handleChange = (event) => {
@@ -53,4 +58,4 @@ class AddSkill extends Component {
   }
 }
 
-export default AddSkill
+export default connect(null, {saveSkill})(AddSkill)
