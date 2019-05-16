@@ -13,7 +13,6 @@ class SkillsPage extends Component {
   render() {
     return (
       <div>
-        <h1>Skills List</h1>
         <SkillsList skills= {this.props.skills}></SkillsList>
       </div>
     )
