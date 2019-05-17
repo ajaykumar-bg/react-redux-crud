@@ -5,7 +5,6 @@ function SkillItem({item, deleteSkill}) {
   return (
     <li className="collection-item">
       <span>{ item.name } : {item.version}</span>
-      <button><Link to={`/skills/${item.id}`}>Details</Link></button>
       <button><Link to={`/skills/edit/${item.id}`}>Edit</Link></button>
       <button onClick={() => deleteSkill(item.id)}>Delete</button>
     </li>

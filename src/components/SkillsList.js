@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
+
 
 import SkillItem from './SkillItem'
 
@@ -19,11 +19,6 @@ function SkillsList({skills, deleteSkill}) {
       <ul className="collection">
         {skillItems}
       </ul>
-      <div className="fixed-action-btn">
-        <Link to="/skills/add" className="btn-floating btn -large red">
-        <i className="fa fa-plus"></i>
-        </Link>
-      </div>
     </div>
     )
   return (
