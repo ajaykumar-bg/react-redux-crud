@@ -16,7 +16,6 @@ class SkillForm extends Component {
     }
 
     addSkill(newSkill) {
-        console.log(newSkill)
         this.props.saveSkill(newSkill)
         .then(resp => {
             this.props.history.push('/skills');
@@ -26,7 +25,6 @@ class SkillForm extends Component {
     }
 
     updateSkill(newSkill) {
-      console.log(newSkill)
       this.props.updateSkill(newSkill)
       .then(resp => {
           this.props.history.push('/skills');
@@ -90,8 +88,6 @@ class SkillForm extends Component {
 }
 
 function mapStateToProps(state, props) {
-  console.log("state", state)
-  console.log("props", props)
   if(props.match.params.id) {
     return {
       skill: state.skills.find(item => item.id == props.match.params.id)
