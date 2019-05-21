@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
+import {connect} from "react-redux"
 
-import ApiConstants from "../constants/ApiConstants";
-// import StorageService from "../services/StorageService";
+import { login } from '../actions/LoginAction'
 
 class Login extends Component {
   constructor(props) {
@@ -12,21 +11,14 @@ class Login extends Component {
     this.state = {};
   }
 
-  /*
   loginUser(userCredentials) {
-    const { baseURL, USER_URL } = ApiConstants;
-    axios
-      .post(`${baseURL}${USER_URL}/login`, userCredentials)
-      .then(response => {
-        StorageService.setAuthToken(response.data.id);
-        console.log(response);
-        this.props.history.push("/dashboard");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.props.login(userCredentials).then(
+      (res) => {
+        this.props.history.push('/');
+      },
+      (err) => console.log(err)
+    );
   }
-  */
 
   onLogin = event => {
     const userCredentials = {
@@ -34,8 +26,7 @@ class Login extends Component {
       password: this.refs.password.value
     };
     event.preventDefault();
-    console.log("userCredentials", userCredentials)
-    // this.loginUser(userCredentials);
+    this.loginUser(userCredentials);
   };
 
   render() {
@@ -78,4 +69,5 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+
+export default connect(null, {login})(Login);

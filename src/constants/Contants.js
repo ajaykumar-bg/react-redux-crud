@@ -1,3 +1,7 @@
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'
+export const REGISTER = 'REGISTER'
+
 export const SET_SKILLS = 'SET_SKILLS'
 export const ADD_SKILL = 'ADD_SKILL'
 export const SKILL_UPDATED = 'SKILL_UPDATED'

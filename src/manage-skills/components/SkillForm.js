@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux'
 import {saveSkill, fetchSkill, updateSkill} from '../../actions/SkillsAction'
@@ -93,6 +94,13 @@ function mapStateToProps(state, props) {
     }
   }
   return { skill: null };
+}
+
+SkillForm.propTypes = {
+  skill: PropTypes.object,
+  saveSkill: PropTypes.func.isRequired,
+  fetchSkill: PropTypes.func.isRequired,
+  updateSkill: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, {saveSkill, fetchSkill, updateSkill})(SkillForm)
