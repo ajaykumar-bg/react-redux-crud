@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import {Switch, Route} from 'react-router-dom'
 
-import Dashboard from './Dashboard'
+import Register from './Register'
+import Login from './Login'
 
+import Dashboard from './Dashboard'
 import SkillsPage from '../manage-skills/components/SkillsPage'
 import SkillForm from '../manage-skills/components/SkillForm'
 
@@ -16,6 +18,10 @@ export class Main extends Component {
       <main>
         <Switch>
             <Route exact path="/" component={Dashboard}/>
+
+            <Route exact path="/register" component={Register}/>
+            <Route exact path="/login" component={Login}/>
+
             <Route exact path="/dashboard" component={Dashboard}/>
             <Route exact path="/skills" component={SkillsPage}/>
             <Route exact path="/skills/add" component={SkillForm}/>
