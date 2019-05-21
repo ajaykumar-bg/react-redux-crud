@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {Switch, Route} from 'react-router-dom'
 
-import SkillsPage from './SkillsPage'
-import SkillForm from './SkillForm'
+import SkillsPage from '../manage-skills/components/SkillsPage'
+import SkillForm from '../manage-skills/components/SkillForm'
 
 
 export class Main extends Component {
