@@ -11,15 +11,16 @@ class Dashboard extends Component {
         this.props.fetchEmployeeCount();
     }
   render() {
+    const { skillCount, employeeCount } = this.props;
     return (
       <div>
         <h3>Dashboard</h3>
           <div className="collection">
             <Link to="/skills" className="collection-item">
-              <span className="badge">{this.props.skillCount}</span>Skills Added
+              <span className="badge">{skillCount}</span>Skills Added
             </Link>
             <Link to="/employees" className="collection-item">
-              <span className="badge">{this.props.employeeCount}</span>Employees
+              <span className="badge">{employeeCount}</span>Employees
             </Link>
           </div>
       </div>

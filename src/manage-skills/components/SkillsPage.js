@@ -14,6 +14,7 @@ class SkillsPage extends Component {
   render() {
     return (
       <div>
+        <h3>Skill List</h3>
         <SkillsList skills= {this.props.skills} deleteSkill={this.props.deleteSkill}></SkillsList>
         <div className="fixed-action-btn">
           <Link to="/skills/add" className="btn-floating btn -large red">

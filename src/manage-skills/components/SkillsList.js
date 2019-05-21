@@ -14,12 +14,9 @@ function SkillsList({skills, deleteSkill}) {
       );
     })
     const skillsList = (
-      <div>
-      <h3>Skill List</h3>
       <ul className="collection">
         {skillItems}
       </ul>
-    </div>
     )
   return (
     <div>

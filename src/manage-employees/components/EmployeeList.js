@@ -14,12 +14,9 @@ function EmployeeList({employees, deleteEmployee}) {
       );
     })
     const employeesList = (
-      <div>
-      <h3>Employee List</h3>
       <ul className="collection">
         {employeeItems}
       </ul>
-    </div>
     )
   return (
     <div>

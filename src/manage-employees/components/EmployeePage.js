@@ -14,6 +14,7 @@ class EmployeePage extends Component {
   render() {
     return (
       <div>
+        <h3>Employee List</h3>
         <EmployeeList employees= {this.props.employees} deleteEmployee={this.props.deleteEmployee}></EmployeeList>
         <div className="fixed-action-btn">
           <Link to="/employees/add" className="btn-floating btn -large red">
