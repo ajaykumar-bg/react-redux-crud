@@ -6,7 +6,13 @@ class Navbar extends Component {
   render() {
     return (
       <nav>
-        <Link to="/skills"><i className="fa fa-certificate"></i>Skills</Link>
+        <div className="nav-wrapper">
+          <Link to="/" className="brand-logo">React CRUD with Redux</Link>
+          <ul id="nav-mobile" className="right hide-on-small-and-down">
+            <li><Link to="/skills">Skills</Link></li>
+            <li><Link to="/employees">Employees</Link></li>
+          </ul>
+        </div>
       </nav>
     )
   }
