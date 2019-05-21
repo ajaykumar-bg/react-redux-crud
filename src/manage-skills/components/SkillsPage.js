@@ -33,7 +33,7 @@ SkillsPage.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        skills: state.skills
+        skills: state.skillReducer
     }
 }
 

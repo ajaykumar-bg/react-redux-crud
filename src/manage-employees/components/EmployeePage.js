@@ -33,7 +33,7 @@ EmployeePage.propTypes = {
 
 function mapStateToProps(state) {
     return {
-      employees: state.employees
+      employees: state.employeeReducer
     }
 }
 

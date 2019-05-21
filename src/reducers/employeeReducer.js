@@ -1,6 +1,6 @@
 import { SET_EMPLOYEES, ADD_EMPLOYEE, EMPLOYEE_FETCHED, EMPLOYEE_UPDATED, EMPLOYEE_DELETED } from '../constants/Contants'
 
-export default function employees(state = [], action = {}) {
+export default function employeeReducer(state = [], action = {}) {
     switch (action.type) {
         case SET_EMPLOYEES: {
             return action.employees;

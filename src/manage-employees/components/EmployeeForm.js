@@ -104,7 +104,7 @@ class EmployeeForm extends Component {
 function mapStateToProps(state, props) {
   if(props.match.params.id) {
     return {
-      employee: state.employees.find(item => item.id == props.match.params.id)
+      employee: state.employeeReducer.find(item => item.id == props.match.params.id)
     }
   }
   return { employee: null };

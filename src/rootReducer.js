@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux'
 
-import skills from './reducers/skills'
-import employees from './reducers/employees'
-import dashboard from './reducers/dashboard'
+import skillReducer from './reducers/skillReducer'
+import employeeReducer from './reducers/employeeReducer'
+import dashboardReducer from './reducers/dashboardReducer'
 
 export default combineReducers({
-    skills,
-    employees,
-    dashboard
+    skillReducer,
+    employeeReducer,
+    dashboardReducer
 })
 

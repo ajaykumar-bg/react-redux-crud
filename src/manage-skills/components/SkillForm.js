@@ -80,7 +80,6 @@ class SkillForm extends Component {
             <label htmlFor="version">Version</label>
           </div>
           <button className="btn" type="submit">Save</button>
-
         </form>
       </div>
     )
@@ -90,7 +89,7 @@ class SkillForm extends Component {
 function mapStateToProps(state, props) {
   if(props.match.params.id) {
     return {
-      skill: state.skills.find(item => item.id == props.match.params.id)
+      skill: state.skillReducer.find(item => item.id == props.match.params.id)
     }
   }
   return { skill: null };

@@ -29,8 +29,8 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
     return {
-        skillCount: state.dashboard.skillCount,
-        employeeCount: state.dashboard.employeeCount,
+        skillCount: state.dashboardReducer.skillCount,
+        employeeCount: state.dashboardReducer.employeeCount,
     }
 }
 

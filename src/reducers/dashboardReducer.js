@@ -5,7 +5,7 @@ const defaultCounter = {
     employeeCount: 0
 }
 
-export default function employees(state = defaultCounter, action = {}) {
+export default function dashboardReducer(state = defaultCounter, action = {}) {
     switch (action.type) {
         case SKILL_COUNT: {
             return {

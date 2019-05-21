@@ -1,6 +1,6 @@
 import { SET_SKILLS, ADD_SKILL, SKILL_FETCHED, SKILL_UPDATED, SKILL_DELETED } from '../constants/Contants'
 
-export default function skills(state = [], action = {}) {
+export default function skillReducer(state = [], action = {}) {
     switch (action.type) {
         case SET_SKILLS: {
             return action.skills;
