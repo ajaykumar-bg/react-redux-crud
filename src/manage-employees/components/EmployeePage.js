@@ -12,7 +12,6 @@ class EmployeePage extends Component {
   }
   
   render() {
-    console.log(this.props)
     return (
       <div>
         <EmployeeList employees= {this.props.employees} deleteEmployee={this.props.deleteEmployee}></EmployeeList>
@@ -38,4 +37,6 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {fetchEmployees, deleteEmployee})(EmployeePage)
+const mapDispatchToProps = {fetchEmployees, deleteEmployee};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeePage)

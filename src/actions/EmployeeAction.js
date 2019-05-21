@@ -1,5 +1,5 @@
 import ApiConstants from '../constants/ApiConstants'
-import { SET_EMPLOYEES, ADD_EMPLOYEE, EMPLOYEE_UPDATED, EMPLOYEE_FETCHED, EMPLOYEE_DELETED } from '../constants/Contants'
+import { SET_EMPLOYEES, ADD_EMPLOYEE, EMPLOYEE_UPDATED, EMPLOYEE_FETCHED, EMPLOYEE_DELETED, EMPLOYEE_COUNT } from '../constants/Contants'
 
 function handleResponse(response) {
     if(response.ok) {
@@ -15,6 +15,13 @@ export function setEmployees(employees) {
     return {
         type: SET_EMPLOYEES,
         employees
+    }
+}
+
+export function setEmployeeCount(count) {
+    return {
+        type: EMPLOYEE_COUNT,
+        count
     }
 }
 
@@ -102,5 +109,14 @@ export function fetchEmployee(id) {
         fetch(`${baseURL}${EMPLOYEE_URL}${id}`)
         .then(res => res.json())
         .then(data => dispatch(employeeFetched(data)));
+    }
+}
+
+export function fetchEmployeeCount() {
+    const { baseURL, EMPLOYEE_URL } = ApiConstants;
+    return dispatch => {
+        fetch(`${baseURL}${EMPLOYEE_URL}/count`)
+        .then(res => res.json())
+        .then(data => dispatch(setEmployeeCount(data.count)));
     }
 }

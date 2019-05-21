@@ -37,4 +37,6 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {fetchSkills, deleteSkill})(SkillsPage)
+const mapDispatchToProps = {fetchSkills, deleteSkill};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SkillsPage)

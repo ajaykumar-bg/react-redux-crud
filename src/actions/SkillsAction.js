@@ -1,5 +1,5 @@
 import ApiConstants from '../constants/ApiConstants'
-import { SET_SKILLS, ADD_SKILL, SKILL_UPDATED, SKILL_FETCHED, SKILL_DELETED } from '../constants/Contants'
+import { SET_SKILLS, ADD_SKILL, SKILL_UPDATED, SKILL_FETCHED, SKILL_DELETED, SKILL_COUNT } from '../constants/Contants'
 
 function handleResponse(response) {
     if(response.ok) {
@@ -15,6 +15,13 @@ export function setSkills(skills) {
     return {
         type: SET_SKILLS,
         skills
+    }
+}
+
+export function setSkillCount(count) {
+    return {
+        type: SKILL_COUNT,
+        count
     }
 }
 
@@ -102,5 +109,14 @@ export function fetchSkill(id) {
         fetch(`${baseURL}${SKILL_URL}${id}`)
         .then(res => res.json())
         .then(data => dispatch(skillFetched(data)));
+    }
+}
+
+export function fetchSkillCount() {
+    const { baseURL, SKILL_URL } = ApiConstants;
+    return dispatch => {
+        fetch(`${baseURL}${SKILL_URL}/count`)
+        .then(res => res.json())
+        .then(data => dispatch(setSkillCount(data.count)));
     }
 }
