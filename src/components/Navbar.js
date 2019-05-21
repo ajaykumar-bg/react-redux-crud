@@ -5,9 +5,9 @@ class Navbar extends Component {
   
   render() {
     return (
-      <div>
+      <nav>
         <Link to="/skills"><i className="fa fa-certificate"></i>Skills</Link>
-      </div>
+      </nav>
     )
   }
 }
