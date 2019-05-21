@@ -4,6 +4,9 @@ import {Switch, Route} from 'react-router-dom'
 import SkillsPage from '../manage-skills/components/SkillsPage'
 import SkillForm from '../manage-skills/components/SkillForm'
 
+import EmployeePage from '../manage-employees/components/EmployeePage'
+import EmployeeForm from '../manage-employees/components/EmployeeForm'
+
 
 export class Main extends Component {
   render() {
@@ -14,6 +17,10 @@ export class Main extends Component {
             <Route exact path="/skills" component={SkillsPage}/>
             <Route exact path="/skills/add" component={SkillForm}/>
             <Route exact path="/skills/edit/:id" component={SkillForm}/>
+
+            <Route exact path="/employees" component={EmployeePage}/>
+            <Route exact path="/employees/add" component={EmployeeForm}/>
+            <Route exact path="/employees/edit/:id" component={EmployeeForm}/>
         </Switch>
         
       </main>
