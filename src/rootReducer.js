@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+import { reducer as formReducer } from 'redux-form'
 
 import authReducer from './reducers/authReducer'
 import skillReducer from './reducers/skillReducer'
@@ -9,6 +10,7 @@ export default combineReducers({
     authReducer,
     skillReducer,
     employeeReducer,
-    dashboardReducer
+    dashboardReducer,
+    form: formReducer
 })
 
