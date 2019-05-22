@@ -5,6 +5,12 @@ const StorageService  = {
     getAuthToken () {
         return localStorage.getItem("auth_token")
     },
+    setLoggedInUser (loggedInUser) {
+        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+    },
+    getLoggedInUser () {
+        return JSON.parse(localStorage.getItem('loggedInUser'));
+    },
     clearStorage () {
         localStorage.clear();
     }

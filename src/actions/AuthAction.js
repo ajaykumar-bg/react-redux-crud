@@ -1,5 +1,5 @@
 import ApiConstants from '../constants/ApiConstants'
-import { LOGIN, REGISTER } from '../constants/Contants'
+import { LOGIN, REGISTER, LOGOUT } from '../constants/Contants'
 import StorageService from "../services/StorageService";
 
 function handleResponse(response) {
@@ -12,10 +12,11 @@ function handleResponse(response) {
     }
 }
 
-export function loggingIn(userDetails) {
+export function loggingIn(userDetails, auth_token) {
     return {
         type: LOGIN,
-        userDetails
+        userDetails,
+        auth_token
     }
 }
 
@@ -23,6 +24,15 @@ export function registerUser(userDetails) {
     return {
         type: REGISTER,
         userDetails
+
+    }
+}
+
+export function logoutUser() {
+    return {
+        type: LOGOUT,
+        isLoggedIn: false,
+        userDetails: {}
     }
 }
 
@@ -38,7 +48,8 @@ export function login(userData) {
         }).then(handleResponse)
         .then(data => {
             StorageService.setAuthToken(data.id);
-            dispatch(loggingIn(userData));
+            StorageService.setLoggedInUser(userData);
+            dispatch(loggingIn(userData, data.id));
         })
     }
 }
@@ -54,8 +65,26 @@ export function register(newUser) {
             }
         }).then(handleResponse)
         .then(data => {
-            StorageService.setAuthToken(data.id);
             dispatch(registerUser(newUser));
+        })
+    }
+}
+
+export function logout() {
+    const auth_token = StorageService.getAuthToken();
+    const { baseURL, USER_URL } = ApiConstants;
+    return dispatch => {
+        return fetch(`${baseURL}${USER_URL}logout?access_token=${auth_token}`, {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(
+            StorageService.clearStorage(),
+            dispatch(logoutUser()),
+            handleResponse
+            )
+        .then(() => {
         })
     }
 }
