@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-// import axios from 'axios'
 
-import ApiConstants from '../constants/ApiConstants'
+import { connect } from 'react-redux'
+
+import { register } from '../actions/AuthAction'
 
 class Register extends Component {
     constructor(props) {
@@ -12,18 +13,14 @@ class Register extends Component {
       }
     }
 
-    /*
     addUser(newUser) {
-        const { baseURL, USER_URL } = ApiConstants;
-        axios.post(`${baseURL}${USER_URL}`, newUser)
-        .then(response => {
-          this.props.history.push('/login');
-        })
-        .catch(err => {
-          console.log(err)
-        });
+        this.props.register(newUser).then(
+            (res) => {
+              this.props.history.push('/login');
+            },
+            (err) => console.log(err)
+          );
     }
-    */
   
     onRegister = (event) => {
         const newUser = {
@@ -32,8 +29,7 @@ class Register extends Component {
             password: this.refs.password.value
         }
         event.preventDefault();
-        console.log("onRegister",newUser)
-        // this.addUser(newUser);
+        this.addUser(newUser);
     }
     
     
@@ -71,4 +67,4 @@ class Register extends Component {
     }
 }
 
-export default Register
+export default connect(null, {register})(Register)
