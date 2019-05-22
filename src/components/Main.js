@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Switch, Route} from 'react-router-dom'
 
+import ReduxFormExample from './ReduxFormExample'
+
 import Register from './Register'
 import Login from './Login'
 
@@ -17,7 +19,9 @@ export class Main extends Component {
     return (
       <main>
         <Switch>
-            <Route exact path="/" component={Dashboard}/>
+            <Route exact path="/" component={ReduxFormExample}/>
+
+            <Route exact path="/redux-form-example" component={ReduxFormExample}/>
 
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
