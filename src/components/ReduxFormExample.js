@@ -4,18 +4,27 @@ import { Field, reduxForm } from 'redux-form'
 class ReduxFormExample extends Component {
 
     onSubmit = (formValues) => {
-        console.log(formValues)
+    }
+
+    renderError = ({error, touched}) => {
+        if (touched && error) {
+            return <div>{error}</div>
+        }
     }
     renderTextInput = (formProps) => {
         return (
             <div className="input-field col s12">
                 <input {...formProps.input} className="validate" placeholder={formProps.placeholder}></input>
+                <div>{this.renderError(formProps.meta)}</div>
             </div>
         )
     }
-    renderTextAreaInput = ({input}) => {
+    renderTextAreaInput = (formProps) => {
         return (
-            <textarea {...input} ></textarea>
+            <div className="input-field col s12">
+                <textarea {...formProps.input} ></textarea>
+                <div>{this.renderError(formProps.meta)}</div>
+            </div>
         )
     }
     render() {
@@ -30,6 +39,14 @@ class ReduxFormExample extends Component {
     }
 }
 
+const validateForm = (formValues) => {
+    const errors = {};
+    if(!formValues.title) errors.title = 'Please add a title'
+    if(!formValues.description) errors.description = 'Please add some description'
+    return errors;
+}
+
 export default reduxForm({
-    form: 'reduxFormExample'
+    form: 'reduxFormExample',
+    validate: validateForm
 })(ReduxFormExample)
